@@ -22,7 +22,7 @@ def do_optimize(month_to_predict, year_to_predict):
         predicted_return = reg.predict(data[(data.month == month_to_predict ) & (data.year == year_to_predict)][["1month_return","1m_3m","1m_6m"]])[0][0]
         realized_excess_return = data[(data.month == month_to_predict ) & (data.year == year_to_predict)][["month_excess_return"]].iloc[0].item()
         realized_return = data[(data.month == month_to_predict ) & (data.year == year_to_predict)][["return"]].iloc[0].item()
-        new_row = [file, predicted_return, realized_excess_return ,realized_return]
+        new_row = [file.split(".")[0], predicted_return, realized_excess_return ,realized_return]
         resutl_df.loc[len(resutl_df)] = new_row
         
     resutl_df = resutl_df.sort_values("predicted_excess_return", ascending=False).reset_index()
