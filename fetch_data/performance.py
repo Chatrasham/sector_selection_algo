@@ -37,7 +37,7 @@ def do_performance(first_years_month, first_year):
 
     for year_to_predict in range(first_year, last_year + 1):
 
-        if year_to_predict == first_year:
+        if (year_to_predict == first_year) and (first_year != last_year) :
             for month_to_predict in range(first_years_month, 13):
                 resutl_df = pd.DataFrame(columns=["sector","predicted_excess_return","realized_excess_return","realized_return"])
                 for file in list_of_files:
