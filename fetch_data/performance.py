@@ -5,6 +5,24 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sector_slc.settings import BASE_DIR
 
+def return_calculator(df):
+    period_return = 1
+    li = list(df)
+    for day, _ in df.iteritems():
+        idx = df.index.get_loc(day)
+        elem = li[idx]
+        if (math.isnan(elem)):
+            elem = outlier_handler(elem)
+            if elem == False:
+                continue
+        period_return = period_return * (1+elem)
+    period_return = period_return - 1
+    return period_return
+
+def outlier_handler(ret):
+    if (math.isnan(ret)):
+        return False
+
 def do_performance(first_years_month, first_year):
 
     processed_data_path = os.path.join(BASE_DIR ,"processed_data")
@@ -93,6 +111,10 @@ def do_performance(first_years_month, first_year):
 
 
 
-
+    total_long_leg_ret =  return_calculator(performance_df["long_leg_return"]/100) * 100
+    total_short_leg_ret = return_calculator(performance_df["short_leg_return"]/100) * 100
+    total_portfolio_ret = total_long_leg_ret - total_short_leg_ret
+    new_row_performance_df = ["total", "return", total_long_leg_ret , total_short_leg_ret, total_portfolio_ret]
+    performance_df.loc[len(performance_df)] = new_row_performance_df
 
     return  performance_df
