@@ -33,7 +33,7 @@ def do_performance(first_years_month, first_year):
     last_years_month = data["month"].iloc[-1]
     last_year = data["year"].iloc[-1]
 
-    performance_df = pd.DataFrame(columns=["month","year","long_leg_return","short_leg_return","portfolio_return"])
+    performance_df = pd.DataFrame(columns=["month","year","long_leg_return","short_leg_return","portfolio_return","index_return"])
 
     for year_to_predict in range(first_year, last_year + 1):
 
@@ -55,10 +55,11 @@ def do_performance(first_years_month, first_year):
         
                 resutl_df = resutl_df.sort_values("predicted_excess_return", ascending=False).reset_index()
                 resutl_df = resutl_df.drop(["index"],axis=1)
+                index_return = (resutl_df["realized_return"] - resutl_df["realized_excess_return"])[0]
                 long_leg_return = resutl_df["realized_return"].iloc[0:3].mean()
                 short_leg_return = resutl_df["realized_return"].iloc[-3:].mean()
                 portfolio_return = long_leg_return - short_leg_return
-                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return]
+                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return, index_return]
                 performance_df.loc[len(performance_df)] = new_row_performance_df
 
         elif year_to_predict == last_year:
@@ -79,10 +80,11 @@ def do_performance(first_years_month, first_year):
         
                 resutl_df = resutl_df.sort_values("predicted_excess_return", ascending=False).reset_index()
                 resutl_df = resutl_df.drop(["index"],axis=1)
+                index_return = (resutl_df["realized_return"] - resutl_df["realized_excess_return"])[0]
                 long_leg_return = resutl_df["realized_return"].iloc[0:3].mean()
                 short_leg_return = resutl_df["realized_return"].iloc[-3:].mean()
                 portfolio_return = long_leg_return - short_leg_return
-                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return]
+                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return, index_return]
                 performance_df.loc[len(performance_df)] = new_row_performance_df
 
         else:
@@ -103,18 +105,20 @@ def do_performance(first_years_month, first_year):
         
                 resutl_df = resutl_df.sort_values("predicted_excess_return", ascending=False).reset_index()
                 resutl_df = resutl_df.drop(["index"],axis=1)
+                index_return = (resutl_df["realized_return"] - resutl_df["realized_excess_return"])[0]
                 long_leg_return = resutl_df["realized_return"].iloc[0:3].mean()
                 short_leg_return = resutl_df["realized_return"].iloc[-3:].mean()
                 portfolio_return = long_leg_return - short_leg_return
-                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return]
+                new_row_performance_df = [month_to_predict, year_to_predict, long_leg_return , short_leg_return, portfolio_return, index_return]
                 performance_df.loc[len(performance_df)] = new_row_performance_df
 
 
 
     total_long_leg_ret =  return_calculator(performance_df["long_leg_return"]/100) * 100
     total_short_leg_ret = return_calculator(performance_df["short_leg_return"]/100) * 100
+    total_index_ret = return_calculator(performance_df["index_return"]/100) * 100
     total_portfolio_ret = total_long_leg_ret - total_short_leg_ret
-    new_row_performance_df = ["total", "return", total_long_leg_ret , total_short_leg_ret, total_portfolio_ret]
+    new_row_performance_df = ["total", "return", total_long_leg_ret , total_short_leg_ret, total_portfolio_ret, total_index_ret]
     performance_df.loc[len(performance_df)] = new_row_performance_df
 
     return  performance_df
