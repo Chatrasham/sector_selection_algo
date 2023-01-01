@@ -39,7 +39,7 @@ def do_fetch():
                 "شاخص بازده نقدي قيمت.csv", "شاخص صنعت.csv", "شاخص قيمت (هم وزن).csv", "شاخص قيمت 50 شركت.csv",
                 "شاخص قيمت(وزنيارزشي).csv", "شاخص50شركت فعالتر.csv", "شاخص كل.csv", "شاخص كل (هم وزن).csv"
                 ]
-    defunct_sectors = ["مبلمان.csv", "ابزار پزشكي.csv" , "پيمانكاري.csv"]
+    defunct_sectors = ["مبلمان.csv", "ابزار پزشكي.csv" , "پيمانكاري.csv","اداره بازارهاي مالي.csv"]
     sectors_li = [item for item in list_of_files if item not in to_delete_indices]
     sectors_li = [item for item in sectors_li if item not in defunct_sectors]
     for f in sectors_li:

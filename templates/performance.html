@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Sector Ranking
+    {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+<h2 class="text-center"><u>Sector Rankings</u></h2><br>			
+<table class="table table-dark table-striped">
+	<thead>
+	<tr>
+		<th>month</th>
+		<th>year</th>
+		<th>long_leg_return</th>
+		<th>short_leg_return</th>
+		<th>portfolio_return</th>
+
+	</tr>
+	</thead>
+	<tbody>
+	<!-- jinja2 Technique -->
+	{% if d %}
+	{% for i in d %}
+	<tr>
+		<td>{{i.month}}</td>
+		<td>{{i.year}}</td>
+		<td>{{i.long_leg_return}}</td>
+		<td>{{i.short_leg_return}}</td>
+		<td>{{i.portfolio_return}}</td>
+	</tr>
+	{% endfor %}
+	{% endif %}
+	</tbody>
+</table>
+</div>
+
+
+
+
+{% endblock %}

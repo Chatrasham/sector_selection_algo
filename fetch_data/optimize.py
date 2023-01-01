@@ -27,9 +27,4 @@ def do_optimize(month_to_predict, year_to_predict):
         
     resutl_df = resutl_df.sort_values("predicted_excess_return", ascending=False).reset_index()
     resutl_df = resutl_df.drop(["index"],axis=1)
-    long_leg_return = resutl_df["realized_return"].iloc[0:3].mean()
-    short_leg_return = resutl_df["realized_return"].iloc[-3:].mean()
-    portfolio_return = long_leg_return - short_leg_return
-
-    print(portfolio_return)
     return  resutl_df
