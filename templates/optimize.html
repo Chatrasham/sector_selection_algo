@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Feed
+    {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+<h2 class="text-center"><u>Sector Rankings</u></h2><br>			
+<table class="table table-dark table-striped">
+	<thead>
+	<tr>
+		<th>Sector</th>
+		<th>Predicted Excess Return</th>
+		<th>Realized Excess Return</th>
+		<th>Realized Return</th>
+	</tr>
+	</thead>
+	<tbody>
+	<!-- jinja2 Technique -->
+	{% if d %}
+	{% for i in d %}
+	<tr>
+		<td>{{i.sector}}</td>
+		<td>{{i.predicted_excess_return}}</td>
+		<td>{{i.realized_excess_return}}</td>
+		<td>{{i.realized_return}}</td>
+	</tr>
+	{% endfor %}
+	{% endif %}
+	</tbody>
+</table>
+</div>
+
+
+
+
+{% endblock %}
