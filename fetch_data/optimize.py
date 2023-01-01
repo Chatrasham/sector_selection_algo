@@ -5,11 +5,9 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sector_slc.settings import BASE_DIR
 
-def do_optimize():
+def do_optimize(month_to_predict, year_to_predict):
 
     processed_data_path = os.path.join(BASE_DIR ,"processed_data")
-    month_to_predict = 1
-    year_to_predict = 1401
     list_of_files = os.listdir(processed_data_path)
     list_of_files = list_of_files[1:]
     resutl_df = pd.DataFrame(columns=["sector","predicted_excess_return","realized_excess_return","realized_return"])
