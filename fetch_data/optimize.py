@@ -91,4 +91,4 @@ def do_optimize(month_to_predict, year_to_predict, method, target):
     
 
 
-    return  result_df
+    return  [result_df, long_leg_return, short_leg_return]

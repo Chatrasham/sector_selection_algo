@@ -13,9 +13,9 @@ METHOD_CHOICES = (
 )
 
 TARGET_CHOICES = (
-    ("excess_next_1m_return", "excess_next_1m_return"),
-    ("excess_next_3m_return", "excess_next_3m_return"),
-    ("excess_next_6m_return", "excess_next_6m_return"),
+    ("excess_next_1m_return", "Next 1 Month"),
+    ("excess_next_3m_return", "Next 3 Month"),
+    ("excess_next_6m_return", "Next 6 Month"),
 )
 
 # creating a form 

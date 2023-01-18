@@ -27,10 +27,11 @@ def optimize_page(request):
             year = form.cleaned_data['year']
             method = form.cleaned_data['method']
             target = form.cleaned_data['target']
-            json_records = do_optimize(month,year,method,target).reset_index().to_json(orient ='records')
+            output_li = do_optimize(month,year,method,target)
+            json_records = output_li[0].reset_index().to_json(orient ='records')
             data = []
             data = json.loads(json_records)
-            context = {'d': data}
+            context = {'d': data, "long_leg_return":output_li[1],"short_leg_return":output_li[2]}
             return render(request, 'optimize.html', context)
     else:
         form = RankForm()

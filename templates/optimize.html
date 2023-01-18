@@ -10,7 +10,8 @@
 <div class="container">
 <h2 class="text-center"><u>Sector Rankings</u></h2><br>	
 <h5> Excess return is measured by subtracting index return from sector's return. </h5>
-<h5> Realized return is the actual absoulte return of that sector that month. </h5>		
+<h6> Long Leg Return = {{long_leg_return|floatformat:2}} % --- Long leg return is the realized excess return of the 3 stocks with the highest predicted return.</h5>	
+<h6> Short Leg Return = {{short_leg_return|floatformat:2}} % --- Short leg return is the realized excess return of the 3 stocks with the lowest predicted return. </h5>		
 <table class="table table-dark table-striped">
 	<thead>
 	<tr>
@@ -20,13 +21,13 @@
 	</tr>
 	</thead>
 	<tbody>
-	<!-- jinja2 Technique -->
+	
 	{% if d %}
 	{% for i in d %}
 	<tr>
 		<td>{{i.sector}}</td>
-		<td>{{i.predicted_excess_return}}</td>
-		<td>{{i.realized_excess_return}}</td>
+		<td>{{i.predicted_excess_return|floatformat:2}} %</td>
+		<td>{{i.realized_excess_return|floatformat:2}} %</td>
 	</tr>
 	{% endfor %}
 	{% endif %}
