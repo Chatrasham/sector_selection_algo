@@ -25,7 +25,6 @@ list_of_sectors = dataset_df.sector.unique().tolist()
 
 
 def do_optimize(month_to_predict, year_to_predict, method, target):
-    print(method)
     if method == "Decision Tree":
         regressor = DecisionTreeRegressor(random_state = 0, max_depth=5, criterion="absolute_error", min_samples_split=300, min_samples_leaf= 150)
     elif method == "Random Forest Regressor":

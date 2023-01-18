@@ -41,9 +41,13 @@ def performance_page(request):
     if request.method == 'POST':
         form = PerformanceForm(request.POST)
         if form.is_valid():
-            month = form.cleaned_data['month']
-            year = form.cleaned_data['year']
-            json_records = do_performance(month,year).reset_index().to_json(orient ='records')
+            first_year_month = form.cleaned_data['first_year_month']
+            first_year = form.cleaned_data['first_year']
+            last_year_month = form.cleaned_data['last_year_month']
+            last_year = form.cleaned_data['last_year']
+            method = form.cleaned_data['method']
+            target = form.cleaned_data['target']
+            json_records = do_performance(first_year,first_year_month,last_year,last_year_month,method,target).reset_index().to_json(orient ='records')
             data = []
             data = json.loads(json_records)
             context = {'d': data}

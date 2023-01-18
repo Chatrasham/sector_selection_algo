@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Sector Ranking
+    Backtest
     {% endblock %}
 
 
@@ -22,8 +22,6 @@
 		<th>year</th>
 		<th>long_leg_return</th>
 		<th>short_leg_return</th>
-		<th>portfolio_return</th>
-		<th>index_return</th>
 
 	</tr>
 	</thead>
@@ -34,10 +32,8 @@
 	<tr>
 		<td>{{i.month}}</td>
 		<td>{{i.year}}</td>
-		<td>{{i.long_leg_return}}</td>
-		<td>{{i.short_leg_return}}</td>
-		<td>{{i.portfolio_return}}</td>
-		<td>{{i.index_return}}</td>
+		<td>{{i.long_leg_return|floatformat:2}}</td>
+		<td>{{i.short_leg_return|floatformat:2}}</td>
 	</tr>
 	{% endfor %}
 	{% endif %}

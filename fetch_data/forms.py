@@ -28,10 +28,19 @@ class RankForm(forms.Form):
     method = forms.ChoiceField(choices = METHOD_CHOICES)
 
     target =   forms.ChoiceField(choices = TARGET_CHOICES)
+    
 
 class PerformanceForm(forms.Form):
    
-    month = forms.IntegerField(
+    first_year_month = forms.IntegerField(
                      )
-    year = forms.IntegerField(
+    first_year = forms.IntegerField(
                      )
+
+    last_year_month = forms.IntegerField(
+                     )
+    last_year = forms.IntegerField(
+                     )                     
+    method = forms.ChoiceField(choices = METHOD_CHOICES)
+
+    target =   forms.ChoiceField(choices = TARGET_CHOICES)
