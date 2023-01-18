@@ -25,9 +25,9 @@ class RankForm(forms.Form):
                      )
     year = forms.IntegerField(
                      )
-    method = forms.ModelChoiceField(choices = METHOD_CHOICES)
+    method = forms.ChoiceField(choices = METHOD_CHOICES)
 
-    targer =   forms.ModelChoiceField(choices = TARGET_CHOICES)
+    target =   forms.ChoiceField(choices = TARGET_CHOICES)
 
 class PerformanceForm(forms.Form):
    
