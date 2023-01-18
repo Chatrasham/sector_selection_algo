@@ -118,7 +118,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trophy-fill" viewBox="0 0 16 16">
                      <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
                     </svg>
-                  &nbsp;&nbsp;&nbsp;Performance</a>
+                  &nbsp;&nbsp;&nbsp;Backtest</a>
 	          </li>
                 
 
@@ -193,9 +193,65 @@
         </nav>
 
           {% block content %}
-          <h5>In this project, we try to predict the next month return of each sector listed in Tehran Stock Exchnage.</h5>
-          <h5>Long leg of the portfolio consists of the three sectors for which the algorithm predicts the highest returns.</h5>
-          <h5>Short leg of the portfolio consists of the three sectors for which the algorithm predicts the lowest returns.</h5>
+          <h5>- This website tries to rank Iran's stock market's sectors using several non-linear machine learning methods.</h5>
+          <br>
+          <h5>
+            - List of machine learning methods used:
+            <br>
+            Decision Tree Regressor
+            <br>
+            Random Forest Regressor
+            <br>
+            K Neighbors Regressor
+            <br>
+            Kernel Ridge
+            <br>
+            Support Vector Regressor
+            <br>
+            Neural Network (2 Layer)
+            <br>
+            Combined Decision Tree and K Neighbors and Kernel Ridge
+            <br>
+            Combined Decision Tree and SVR and Neural Network
+            <br>
+            Combined K Neighbors and Kernel Ridge and Neural Network
+          <br>
+          <br>
+          <h5>
+            - List of features used:
+            <br>
+            P/E-ttm of sector
+            <br>
+            P/E-ttm of market
+            <br>
+            Percentage difference of nima USD to market USD rate<br>
+            Inflation
+            <br>
+            Change in money supply 
+            <br>
+            Last 1m return of sector
+            <br>
+            Last 3m return of sector
+            <br>
+            Last 6m return of sector
+            <br>
+            Last 1m return of Iran's stock market (TSE + Farabourse)
+            <br>
+            Last 3m return of Iran's stock market (TSE + Farabourse)
+            <br>
+            Last 6m return of Iran's stock market (TSE + Farabourse)
+            <br>
+            Last 1m return of USD
+            <br>
+            Last 3m return of USD
+            <br>
+            Last 6m return of USD
+            <br>
+            Sector's trade value relative to past 6 months
+            <br>
+            Whole market's trade value relative to past 6 months
+
+          </h5>
         {% endblock %}
 
       </div>

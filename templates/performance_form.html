@@ -8,12 +8,34 @@
 {% block content %}
 <div class="container">
     <h2 class="text-center"><u>Performance over time</u></h2><br>	
-Please enter a year after 1397 including 1397.
-Month between 1 to 12.
+    <h6>
+    Please enter a year after 1396 including 1396 and a month between 1 to 12. 
+    <br>
+    Last year and month must be before 1401/04 .
+    <br>
+    You may choose your desired machine learning method and forecasting horizon.</h6>
+    <br>
 <form action = "" method = "post">
     {% csrf_token %}
-    {{form }}
-    <input type="submit" value=Submit">
+    First year month: {{form.first_year_month}}
+    <br>
+    <br>
+    First year: {{form.first_year}}
+    <br>
+    <br>
+    Last year month: {{form.last_year_month}}   
+    <br>
+    <br>  
+    Last year: {{form.last_year}} 
+    <br>
+    <br>    
+    method: {{form.method}}
+    <br>
+    <br>
+    horizon: {{form.target}}
+    <br>
+    <br>
+    <input type="submit" value=Submit>
 </form>
     
 

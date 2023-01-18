@@ -1,7 +1,7 @@
 from django import forms
    
 METHOD_CHOICES = (
-    ("Decision Tree", "Decision Tree"),
+    ("Decision Tree", "Decision Tree Regressor"),
     ("Random Forest Regressor", "Random Forest Regressor"),
     ("K Neighbors Regressor", "K Neighbors Regressor"),
     ("Kernel Ridge", "Kernel Ridge"),

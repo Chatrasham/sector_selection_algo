@@ -47,10 +47,11 @@ def performance_page(request):
             last_year = form.cleaned_data['last_year']
             method = form.cleaned_data['method']
             target = form.cleaned_data['target']
-            json_records = do_performance(first_year,first_year_month,last_year,last_year_month,method,target).reset_index().to_json(orient ='records')
+            output_li = do_performance(first_year,first_year_month,last_year,last_year_month,method,target)
+            json_records = output_li[0].reset_index().to_json(orient ='records')
             data = []
             data = json.loads(json_records)
-            context = {'d': data}
+            context = {'d': data, "l_gt_zero":output_li[1]*100, "l_gt_s":output_li[2]*100}
             return render(request, 'performance.html', context)
     else:
         form = PerformanceForm()

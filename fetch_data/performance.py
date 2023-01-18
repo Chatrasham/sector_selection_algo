@@ -117,7 +117,11 @@ def do_performance(first_year,first_year_month , last_year, last_year_month, met
                 performance_df.loc[len(performance_df)] = new_row
 
         elif year == last_year:
-            for month in range(1, last_year_month + 1):
+            if year_to_predict == last_year:
+                rng = range(month_to_predict, last_year_month + 1)
+            else:
+                rng = range(1, last_year_month + 1)
+            for month in rng:
                 first_occurence = dataset_df[(dataset_df.month == month) & (dataset_df.year == year)].iloc[0].name
                 train_set = dataset_df[:first_occurence]
 
@@ -166,5 +170,6 @@ def do_performance(first_year,first_year_month , last_year, last_year_month, met
                 new_row = [year, month, long_leg_return, short_leg_return]
                 performance_df.loc[len(performance_df)] = new_row
 
-
-    return  performance_df
+    l_gt_zero = performance_df["long_leg_return"].gt(0).sum() / len(performance_df)
+    l_gt_s = (performance_df["long_leg_return"]-performance_df["short_leg_return"]).gt(0).sum() / len(performance_df)
+    return  [performance_df,l_gt_zero,l_gt_s]
