@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sector_slc.settings import BASE_DIR
 
-def do_optimize(month_to_predict, year_to_predict):
+def do_optimize(month_to_predict, year_to_predict, method, target):
 
     processed_data_path = os.path.join(BASE_DIR ,"processed_data")
     list_of_files = os.listdir(processed_data_path)

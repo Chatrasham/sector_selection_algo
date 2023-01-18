@@ -25,7 +25,9 @@ def optimize_page(request):
         if form.is_valid():
             month = form.cleaned_data['month']
             year = form.cleaned_data['year']
-            json_records = do_optimize(month,year).reset_index().to_json(orient ='records')
+            method = form.cleaned_data['method']
+            target = form.cleaned_data['target']
+            json_records = do_optimize(month,year,method,target).reset_index().to_json(orient ='records')
             data = []
             data = json.loads(json_records)
             context = {'d': data}
